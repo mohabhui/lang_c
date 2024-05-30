@@ -1,0 +1,10 @@
+Test Data Creation:
+	Download Windows.log (28.01 GB) from
+	https://www.kaggle.com/datasets/omduggineni/loghub-windows-log-data
+	
+	Split the text file with below command:
+	
+		e.g. to split Windows.log file into 500 mb chunks, execute
+		below command in Linux Terminal or Cygwin64 terminal.
+		
+		split Windows.log -b 500m

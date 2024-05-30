@@ -1,0 +1,55 @@
+==================================================================
+
+Parameters:
+      Change parameters pattern, filePath, splitNum as required
+      under section "Assign Variable Values" inside main() method.
+      Specify number of threads and processes from command.
+	  
+==================================================================
+
+Sample Data File:
+	./data/windows_mb512.log
+
+==================================================================
+
+Compile and Run Command for Linux:
+
+	rabin_karp_serial.c
+	-------------------
+		gcc rabin_karp_serial.c -o app.exe
+		./app.exe
+
+	rabin_karp_omp.c
+	----------------
+		gcc -DNTHREADS=16 -fopenmp rabin_karp_omp.c -o app.exe
+		export OMP_NUM_THREADS=16		
+		./app.exe
+
+	rabin_karp_mpi.c
+	----------------
+		mpicc rabin_karp_mpi.c -o app.exe
+		mpirun -n 16 ./app.exe
+
+	rabin_karp_mpi_omp.c
+	--------------------
+		mpicc -DNTHREADS=16 -fopenmp rabin_karp_mpi_omp.c -o app.exe
+		export OMP_NUM_THREADS=16
+		mpirun -n 16 ./app.exe
+
+	rabin_karp_cuda.cu
+	------------------
+		nvcc rabin_karp_cuda.cu -o rabin_karp_cuda.x
+		./rabin_karp_cuda.x
+
+==================================================================
+
+Test Data Creation:
+	Download Windows.log (28.01 GB) from
+	https://www.kaggle.com/datasets/omduggineni/loghub-windows-log-data
+	
+	Split the text file with below command:
+	
+		e.g. to split Windows.log file into 500 mb chunks, execute
+		below command in Linux Terminal or Cygwin64 terminal.
+		
+		split Windows.log -b 500m
